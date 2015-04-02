@@ -6,20 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using SimplexNoise;
 
 namespace NoiseTest
 {
     public partial class Form1 : Form
     {
-        private byte[] byteBackup;
         PictureBox pictureBox1 = new PictureBox();
 
         public Form1()
         {
-            byteBackup = new byte[Noise.perm.Length];
-            Noise.perm.CopyTo(byteBackup, 0);
-
             InitializeComponent();
 
             this.GridSize.Value = 3;
@@ -58,37 +53,30 @@ namespace NoiseTest
             byte[] destinationData = new byte[imageByteSize];
             int bitsPerPixelElement = 32 / 8;
 
-            byte[] noiseSeed;
             if (this.OverrideSeed.Checked && (GetInt(this.NewSeed) > 0))
             {
-                noiseSeed = new byte[512];
-                Random rand = new Random(GetInt(this.NewSeed));
-                rand.NextBytes(noiseSeed);
+                Simplex.Noise.Seed = GetInt(this.NewSeed);
             }
             else
             {
-                noiseSeed = this.byteBackup;
+                Simplex.Noise.Seed = 0;
             }
 
-            Noise.perm = noiseSeed;
+            float[,] values = Simplex.Noise.Calc2D(width, height, 0.01f);
 
             for (int x = 0; x < width; x += gridSize)
             {
                 for (int y = 0; y < height; y += gridSize)
                 {
-                    float scale = 0.05f;
-                    byte cval = (byte)(Noise.Generate(x * scale, y * scale) * 128 + 128);
-                    //byte cval = (byte)(Noise.Generate(x / 100f, y / 100f) * 128 + 128);
-
                     for (int i = 0; i < gridSize; i++)
                     {
                         if ((x + i) >= width) break;
                         for (int j = 0; j < gridSize; j++)
                         {
                             if ((y + j) >= height) break;
-                            destinationData[(y + j) * flagData.Stride + (x + i) * bitsPerPixelElement + 2] = (byte)((float)cval * 0.6); // R
-                            destinationData[(y + j) * flagData.Stride + (x + i) * bitsPerPixelElement + 1] = (byte)((float)cval * 0.6); // G
-                            destinationData[(y + j) * flagData.Stride + (x + i) * bitsPerPixelElement] = cval; // B
+                            destinationData[(y + j) * flagData.Stride + (x + i) * bitsPerPixelElement + 2] = (byte)(values[x,y] * 0.6); // R
+                            destinationData[(y + j) * flagData.Stride + (x + i) * bitsPerPixelElement + 1] = (byte)(values[x,y] * 0.6); // G
+                            destinationData[(y + j) * flagData.Stride + (x + i) * bitsPerPixelElement] = (byte)values[x,y]; // B
                         }
                     }
 

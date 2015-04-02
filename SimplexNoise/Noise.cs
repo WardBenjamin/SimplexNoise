@@ -9,11 +9,10 @@ namespace Simplex
     /// <summary>
     /// Implementation of the Perlin simplex noise, an improved Perlin noise algorithm.
     /// Based loosely on SimplexNoise1234 by Stefan Gustavson <http://staffwww.itn.liu.se/~stegu/aqsis/aqsis-newnoise/>
-    /// 
     /// </summary>
     public class Noise
     {
-        public static float[] Calc1D(int width, float scale) 
+        public static float[] Calc1D(int width, float scale)
         {
             float[] values = new float[width];
             for (int i = 0; i < width; i++)
@@ -30,9 +29,9 @@ namespace Simplex
             return values;
         }
 
-        public static float[,,] Calc3D(int width, int height, int length, float scale)
+        public static float[, ,] Calc3D(int width, int height, int length, float scale)
         {
-            float[,,] values = new float[width, height, length];
+            float[, ,] values = new float[width, height, length];
             for (int i = 0; i < width; i++)
                 for (int j = 0; j < height; j++)
                     for (int k = 0; k < length; k++)
@@ -40,11 +39,28 @@ namespace Simplex
             return values;
         }
 
-        static Noise() 
+        float CalcPixel1D(int x, float scale)
         {
+            return Generate(x * scale) * 128 + 128;
         }
 
-        public static int Seed 
+        float CalcPixel2D(int x, int y, float scale)
+        {
+            return Generate(x * scale, y * scale) * 128 + 128;
+        }
+
+        float CalcPixel3D(int x, int y, int z, float scale)
+        {
+            return Generate(x * scale, y * scale, z * scale) * 128 + 128;
+        }
+
+        static Noise()
+        {
+            perm = new byte[permOriginal.Length];
+            Simplex.Noise.permOriginal.CopyTo(perm, 0);
+        }
+
+        public static int Seed
         {
             get { return seed; }
             set

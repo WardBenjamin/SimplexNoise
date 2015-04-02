@@ -1,4 +1,5 @@
 ﻿// Simplex noise example.
+// Author: Benjamin Ward
 // Original version by Heikki Törmälä 2012
 // Improved by Draco Rat 2013 (Improved GUI with gridsize, random seed, faster drawing and time taken to draw.)
 

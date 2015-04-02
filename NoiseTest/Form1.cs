@@ -72,11 +72,13 @@ namespace NoiseTest
 
             Noise.perm = noiseSeed;
 
-            for (int x = 0; x < width; x+= gridSize)
+            for (int x = 0; x < width; x += gridSize)
             {
-                for (int y = 0 ; y < height ; y+= gridSize)
+                for (int y = 0; y < height; y += gridSize)
                 {
-                    byte cval = (byte)(Noise.Generate(x / 100f, y / 100f) * 128 + 128);
+                    float scale = 0.05f;
+                    byte cval = (byte)(Noise.Generate(x * scale, y * scale) * 128 + 128);
+                    //byte cval = (byte)(Noise.Generate(x / 100f, y / 100f) * 128 + 128);
 
                     for (int i = 0; i < gridSize; i++)
                     {
@@ -89,7 +91,7 @@ namespace NoiseTest
                             destinationData[(y + j) * flagData.Stride + (x + i) * bitsPerPixelElement] = cval; // B
                         }
                     }
-                    
+
                     //Color col = Color.FromArgb((int)(cval*0.6f), (int)(cval*0.6f), cval);
                     //SolidBrush brush = new SolidBrush(col);
 

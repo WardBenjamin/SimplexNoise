@@ -1,6 +1,14 @@
 # Simplex Noise
 
-Simplex Noise implementation originally based on one by Heikki Törmälä (2012). It offers Simplex Noise in 1D, 2D, and 3D forms, returning values in the range of 0 to 255.
+Simplex Noise implementation offering 1D, 2D, and 3D forms w/ values in the range of 0 to 255. Based on work by Heikki TÃ¶rmÃ¤lÃ¤ (2012) and Stefan Gustavson (2006).
+
+### Why use simplex noise?
+
+Classic noise has problems with non-uniformity throughout its domain of definition, particularly for 2D planar slices of 3D and 4D noise, it has visible axis-aligned artefacts, it is expensive to compute for 4D and up, and its derivative in 3D and 4D is a very complicated high order polynomial.
+
+Simplex noise is several times faster to compute, particularly for 4D and up, it does not have nearly as many visual problems with non-uniformity and axis-aligned artefacts, and it has a simple polynomial derivative everywhere, even for higher dimensions.
+
+Simplex noise looks better, but different, and is thus visually incompatible with classic Perlin noise. The difference in feature size and range of values can easily be compensated for by a few simple scaling multiplications, but the different visual character might change the visual result of shaders that depend heavily on one or two components of noise. (Fractal sums of several noise components should still look about the same, though.)
 
 Example of implementation:
 

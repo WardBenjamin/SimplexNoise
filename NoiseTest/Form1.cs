@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SimplexNoise;
 
 namespace NoiseTest
 {
@@ -55,14 +56,14 @@ namespace NoiseTest
 
             if (this.OverrideSeed.Checked && (GetInt(this.NewSeed) > 0))
             {
-                Simplex.Noise.Seed = GetInt(this.NewSeed);
+                Noise.Seed = GetInt(this.NewSeed);
             }
             else
             {
-                Simplex.Noise.Seed = 0;
+                Noise.Seed = 0;
             }
 
-            float[,] values = Simplex.Noise.Calc2D(width, height, 0.01f);
+            float[,] values = Noise.Calc2D(width, height, 0.01f);
 
             for (int x = 0; x < width; x += gridSize)
             {

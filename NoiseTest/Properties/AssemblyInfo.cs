@@ -1,16 +1,21 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿// Simplex Noise for C#
+// Copyright © Benjamin Ward 2019
+// See LICENSE
+// Simplex Noise implementation offering 1D, 2D, and 3D forms w/ values in the range of 0 to 255.
+// Based on work by Heikki Törmälä (2012) and Stefan Gustavson (2006).
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("NoiseTest")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Test/demonstration application for simplex noise library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("WardBenjamin")]
 [assembly: AssemblyProduct("NoiseTest")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCopyright("Copyright © Benjamin Ward 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +25,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8ca423ba-2b34-42e4-aa2a-1714e6b80ed8")]
+[assembly: Guid("8F3192FF-C458-4A84-AD52-B681214707DA")]
 
 // Version information for an assembly consists of the following four values:
 //

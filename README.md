@@ -2,6 +2,9 @@
 
 Simplex Noise implementation offering 1D, 2D, and 3D forms w/ values in the range of 0 to 255. Based on work by Heikki Törmälä (2012) and Stefan Gustavson (2006). Core algorithm designed by Ken Perlin (2001). 
 
+![Nuget](https://img.shields.io/nuget/v/SimplexNoise.svg)
+![Nuget](https://img.shields.io/nuget/dt/SimplexNoise.svg)
+
 ### What does this library provide?
 
 This library provides 1D, 2D, and 3D simplex noise, which is useful for procedural content generation - for example, terrain and particles in game development or visual media in movies. Compared to classic Perlin noise, simplex noise has no noticable directional artefacts, and has a well-defined and continuous (coherent) gradient. This means content will be visually smoother, with a lower computational complexity especially at higher orders.

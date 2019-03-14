@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>SimplexNoise</id>
+    <version>2.0.0</version>
+    <title>Simplex Noise</title>
+    <authors>WardBenjamin</authors>
+    <owners>WardBenjamin</owners>
+    <license type="expression">BSD-3-Clause</license>
+    <licenseUrl>https://licenses.nuget.org/BSD-3-Clause</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/WardBenjamin/SimplexNoise</projectUrl>
+    <iconUrl>https://github.com/WardBenjamin/SimplexNoise/blob/master/logo.png?raw=true</iconUrl>
+    <summary>Simplex Noise implementation offering 1D, 2D, and 3D forms, useful in procedural content generation. Improvements over classic Perlin noise.</summary>
+    <description>Simplex Noise implementation offering 1D, 2D, and 3D forms. Based on work by Heikki Törmälä (2012) and Stefan Gustavson (2006). Core algorithm designed by Ken Perlin (2001).
+
+This library provides 1D, 2D, and 3D simplex (coherent) noise, which is useful for procedural content generation - for example, terrain and particles in game development or visual media in movies. Compared to classic Perlin noise, simplex noise has no noticable directional artefacts, and has a well-defined and continuous gradient. This means content will be visually smoother, with a lower computational complexity especially at higher orders.</description>
+    <copyright>Copyright © Benjamin Ward 2019</copyright>
+    <tags>simplex noise simplexnoise perlin ken coherent procedural texture terrain particle math algorithm 1D 2D 3D</tags>
+    <repository type="git" url="https://github.com/WardBenjamin/SimplexNoise" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.0" />
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework=".NETFramework4.7.2" />
+      <group targetFramework=".NETStandard1.0">
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETCoreApp2.2" />
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

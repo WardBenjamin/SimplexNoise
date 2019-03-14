@@ -4,4 +4,39 @@
         <TargetFrameworks>net40;net45;net472;netstandard1.0;netstandard2.0;netcoreapp2.2</TargetFrameworks>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Title>Simplex Noise</Title>
+        <Authors>WardBenjamin</Authors>
+        <Copyright>Copyright © Benjamin Ward 2019</Copyright>
+        <Description>Simplex Noise implementation offering 1D, 2D, and 3D forms. Based on work by Heikki Törmälä (2012) and Stefan Gustavson (2006). Core algorithm designed by Ken Perlin (2001).
+
+This library provides 1D, 2D, and 3D simplex (coherent) noise, which is useful for procedural content generation - for example, terrain and particles in game development or visual media in movies. Compared to classic Perlin noise, simplex noise has no noticable directional artefacts, and has a well-defined and continuous gradient. This means content will be visually smoother, with a lower computational complexity especially at higher orders.
+        </Description>
+        <PackageIconUrl>https://github.com/WardBenjamin/SimplexNoise/blob/master/logo.png?raw=true</PackageIconUrl>
+        <PackageId>SimplexNoise</PackageId>
+        <PackageVersion>2.0.0</PackageVersion>
+        <PackageDescription>Simplex Noise implementation offering 1D, 2D, and 3D forms, useful in procedural content generation. Improvements over classic Perlin noise.</PackageDescription>
+        <PackageProjectUrl>https://github.com/WardBenjamin/SimplexNoise</PackageProjectUrl>
+        <PackageTags>simplex; noise; simplexnoise; perlin; ken; coherent; procedural; texture; terrain; particle; math; algorithm; 1D; 2D; 3D</PackageTags>
+        <PackageLicense>BSD-3-Clause</PackageLicense>
+        <RepositoryUrl>https://github.com/WardBenjamin/SimplexNoise</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\LICENSE.txt">
+            <Pack>true</Pack>
+            <PackagePath>$(PackageLicenseFile)</PackagePath>
+        </None>
+        <None Include="..\README.md">
+            <Pack>true</Pack>
+            <PackagePath>/</PackagePath>
+        </None>
+    </ItemGroup>
+
 </Project>

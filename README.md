@@ -2,8 +2,8 @@
 
 Simplex Noise implementation offering 1D, 2D, and 3D forms w/ values in the range of 0 to 255. Based on work by Heikki Törmälä (2012) and Stefan Gustavson (2006). Core algorithm designed by Ken Perlin (2001). 
 
-![Nuget](https://img.shields.io/nuget/v/SimplexNoise.svg?logo=nuget)
-![Nuget](https://img.shields.io/nuget/dt/SimplexNoise.svg)
+[![Nuget](https://img.shields.io/nuget/v/SimplexNoise.svg?logo=nuget)](https://www.nuget.org/packages/SimplexNoise/2.0.0)
+[![Nuget](https://img.shields.io/nuget/dt/SimplexNoise.svg)](https://www.nuget.org/packages/SimplexNoise/2.0.0)
 
 ### What does this library provide?
 

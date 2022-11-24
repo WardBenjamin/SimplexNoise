@@ -14,6 +14,12 @@ namespace SimplexNoise
     /// </summary>
     public static class Noise
     {
+        /// <summary>
+        /// Creates 1D Simplex noise
+        /// </summary>
+        /// <param name="width">The number of points to generate</param>
+        /// <param name="scale">The scale of the noise. The greater the scale, the denser the noise gets</param>
+        /// <returns>An array containing 1D Simplex noise</returns>
         public static float[] Calc1D(int width, float scale)
         {
             var values = new float[width];
@@ -22,6 +28,13 @@ namespace SimplexNoise
             return values;
         }
 
+        /// <summary>
+        /// Creates 2D Simplex noise
+        /// </summary>
+        /// <param name="width">The number of points to generate in the 1st dimension</param>
+        /// <param name="height">The number of points to generate in the 2nd dimension</param>
+        /// <param name="scale">The scale of the noise. The greater the scale, the denser the noise gets</param>
+        /// <returns>An array containing 2D Simplex noise</returns>
         public static float[,] Calc2D(int width, int height, float scale)
         {
             var values = new float[width, height];
@@ -31,6 +44,14 @@ namespace SimplexNoise
             return values;
         }
 
+        /// <summary>
+        /// Creates 3D Simplex noise
+        /// </summary>
+        /// <param name="width">The number of points to generate in the 1st dimension</param>
+        /// <param name="height">The number of points to generate in the 2nd dimension</param>
+        /// <param name="length">The number of points to generate in the 3nd dimension</param>
+        /// <param name="scale">The scale of the noise. The greater the scale, the denser the noise gets</param>
+        /// <returns>An array containing 3D Simplex noise</returns>
         public static float[, ,] Calc3D(int width, int height, int length, float scale)
         {
             var values = new float[width, height, length];
@@ -41,16 +62,38 @@ namespace SimplexNoise
             return values;
         }
 
+        /// <summary>
+        /// Gets the value of an index of 1D simplex noise
+        /// </summary>
+        /// <param name="x">Index</param>
+        /// <param name="scale">The scale of the noise. The greater the scale, the denser the noise gets</param>
+        /// <returns>The value of an index of 1D simplex noise</returns>
         public static float CalcPixel1D(int x, float scale)
         {
             return Generate(x * scale) * 128 + 128;
         }
 
+        /// <summary>
+        /// Gets the value of an index of 2D simplex noise
+        /// </summary>
+        /// <param name="x">1st dimension index</param>
+        /// <param name="y">2st dimension index</param>
+        /// <param name="scale">The scale of the noise. The greater the scale, the denser the noise gets</param>
+        /// <returns>The value of an index of 2D simplex noise</returns>
         public static float CalcPixel2D(int x, int y, float scale)
         {
             return Generate(x * scale, y * scale) * 128 + 128;
         }
 
+
+        /// <summary>
+        /// Gets the value of an index of 3D simplex noise
+        /// </summary>
+        /// <param name="x">1st dimension index</param>
+        /// <param name="y">2nd dimension index</param>
+        /// <param name="z">3rd dimension index</param>
+        /// <param name="scale">The scale of the noise. The greater the scale, the denser the noise gets</param>
+        /// <returns>The value of an index of 3D simplex noise</returns>
         public static float CalcPixel3D(int x, int y, int z, float scale)
         {
             return Generate(x * scale, y * scale, z * scale) * 128 + 128;
@@ -62,6 +105,9 @@ namespace SimplexNoise
             PermOriginal.CopyTo(_perm, 0);
         }
 
+        /// <summary>
+        /// Arbitrary integer seed used to generate lookup table used internally
+        /// </summary>
         public static int Seed
         {
             get => _seed;

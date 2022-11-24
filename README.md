@@ -28,18 +28,90 @@ Simplex noise looks better, but different, and is thus visually incompatible wit
 
 ### Example of implementation
 
-    Simplex.Noise.Seed = 209323094; // Optional
-    int length = 10, width = 15;
-    float scale = 0.10f;
-    float[,] noiseValues = Simplex.Noise.Calc2D(length, width, scale);
+```csharp
+using SimplexNoise;
 
+Noise.Seed = 209323094; // Optional
+
+int length = 10, width = 15; // The number of points to generate in the 1st and 2nd dimension
+float scale = 0.10f; // The scale of the noise. The greater the scale, the denser the noise gets
+float[,] noiseValues = Noise.Calc2D(length, width, scale); // Returns an array containing 2D Simplex noise
+```
 
 ### API
 
-- Simplex.Noise.Seed - Arbitrary integer seed used to generate lookup table used internally.
-- float[] Simplex.Noise.Calc1D - returns an array containing 1D Simplex noise
-- float[,] Simplex.Noise.Calc2D - returns an array containing 2D Simplex noise
-- float[,,] Simplex.Noise.Calc3D - returns an array containing 3D Simplex noise
-- float Simplex.Noise.CalcPixel1D - returns the value of an index of 1D simplex noise
-- float Simplex.Noise.CalcPixel2D - returns the value of an index of 2D simplex noise
-- float Simplex.Noise.CalcPixel3D - returns the value of an index of 3D simplex noise
+- [Noise.Seed](#noiseseed) - Arbitrary integer seed used to generate lookup table used internally.
+- [float\[\] Noise.Calc1D](#noisecalc1d) - returns an array containing 1D Simplex noise
+- [float\[,\] Noise.Calc2D](#noisecalc2d) - returns an array containing 2D Simplex noise
+- [float\[,,\] Noise.Calc3D](#noisecalc3d) - returns an array containing 3D Simplex noise
+- [float Noise.CalcPixel1D](#noisecalcpixel1d) - returns the value of an index of 1D simplex noise
+- [float Noise.CalcPixel2D](#noisecalcpixel2d) - returns the value of an index of 2D simplex noise
+- [float Noise.CalcPixel3D](#noisecalcpixel3d) - returns the value of an index of 3D simplex noise
+
+#### Noise.Seed
+
+Arbitrary integer seed used to generate lookup table used internally. You can set the `Seed` property to get deterministic noise, otherwise, the `Seed` will default to `0`.
+
+```csharp
+Noise.Seed = 123456;
+```
+
+#### Noise.Calc1D
+
+Creates 1D Simplex noise.
+
+```csharp
+int width = 10; // The number of points to generate
+float scale = 0.10f; // The scale of the noise. The greater the scale, the denser the noise gets // The scale of the noise. The greater the scale, the denser the noise gets
+float[] noise = Noise.Calc1D(width, scale); // Returns an array containing 1D Simplex noise
+```
+
+#### Noise.Calc2D
+
+Creates 2D Simplex noise.
+
+```csharp
+int width = 10, height = 15; // The number of points to generate in the 1st and 2nd dimension
+float scale = 0.10f; // The scale of the noise. The greater the scale, the denser the noise gets
+float[,] noise = Noise.Calc2D(width, height, scale); // Returns an array containing 2D Simplex noise
+```
+
+#### Noise.Calc3D
+
+Creates 3D Simplex noise.
+
+```csharp
+int width = 10, height = 15, length = 20; // The number of points to generate in the 1st, 2nd and 3rd dimension
+float scale = 0.10f; // The scale of the noise. The greater the scale, the denser the noise gets
+float[,,] noise = Noise.Calc3D(width, height, length, scale); // Returns an array containing 3D Simplex noise
+```
+
+#### Noise.CalcPixel1D
+
+Gets the value of an index of 1D simplex noise.
+
+```csharp
+int x = 10; // Index
+float scale = 0.10f; // The scale of the noise. The greater the scale, the denser the noise gets
+float pixel = Noise.CalcPixel1D(x, scale); // Returns the value of an index of 1D simplex noise
+```
+
+#### Noise.CalcPixel2D
+
+Gets the value of an index of 2D simplex noise.
+
+```csharp
+int x = 10, y = 15; // Indexes for the 1st and 2nd dimension
+float scale = 0.10f; // The scale of the noise. The greater the scale, the denser the noise gets
+float pixel = Noise.CalcPixel2D(x, y, scale); // Returns the value of an index of 2D simplex noise
+```
+
+#### Noise.CalcPixel3D
+
+Gets the value of an index of 3D simplex noise.
+
+```csharp
+int x = 10, y = 15, z = 20; // Indexes for the 1st, 2nd and 3rd dimension
+float scale = 0.10f; // The scale of the noise. The greater the scale, the denser the noise gets
+float pixel = Noise.CalcPixel3D(x, y, z, scale);// Returns the value of an index of 3D simplex noise
+```
